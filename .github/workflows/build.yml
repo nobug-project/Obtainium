@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: actions/setup-java@v5
+      - uses: actions/setup-java@v6
         with:
           distribution: 'temurin'
           java-version: '21'
@@ -59,7 +59,7 @@ jobs:
         if: ${{ env.INFISICAL_PROJECT_SLUG != '' }}
         env:
           INFISICAL_PROJECT_SLUG: ${{ secrets.INFISICAL_PROJECT_SLUG }}
-        uses: Infisical/secrets-action@v1.0.12
+        uses: Infisical/secrets-action@v1.0.18
         with:
           project-slug: ${{ secrets.INFISICAL_PROJECT_SLUG }}
           env-slug: ${{ secrets.INFISICAL_ENV_SLUG }}
@@ -142,7 +142,7 @@ jobs:
           subject-path: 'build/app/outputs/flutter-apk/ObtainX-*.apk'
 
       - name: Upload APKs
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: obtainx-apks-v${{ steps.extract_version.outputs.version }}
           path: |
